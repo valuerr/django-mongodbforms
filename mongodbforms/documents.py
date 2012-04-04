@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 from django.utils.text import capfirst
 
 from mongoengine.fields import ObjectIdField, ListField, ReferenceField, FileField, ImageField
-from mongoengine.base import ValidationError
+from mongoengine.base import ValidationError, BaseList
 from mongoengine.connection import _get_db
 
 from fieldgenerator import MongoDefaultFormFieldGenerator
@@ -482,7 +482,7 @@ class EmbeddedDocumentForm(BaseDocumentForm):
             if hasattr(self.instance, 'save'):
                 self.instance.save()
 
-            if not isinstance(l, ListField):
+            if not (isinstance(l, ListField) or isinstance(l, BaseList)):
                 l = self.instance
             elif self.instance not in l:
                 l.append(self.instance)
