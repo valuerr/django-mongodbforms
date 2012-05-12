@@ -9,7 +9,7 @@ from django import forms
 from django.core.validators import EMPTY_VALUES
 from django.utils.translation import ugettext as _
 from pymongo.errors import InvalidId
-from pymongo.objectid import ObjectId
+from bson.objectid import ObjectId
 from django.utils.encoding import smart_unicode, force_unicode
 from django.utils.translation import ugettext_lazy as _
 
