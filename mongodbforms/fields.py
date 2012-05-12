@@ -81,7 +81,8 @@ class ReferenceField(forms.ChoiceField):
             return None
 
         try:
-            oid = ObjectId(value)
+            #oid = ObjectId(value)
+            oid = value # Fix for pk=SequenceField()
             oid = super(ReferenceField, self).clean(oid)
 
             queryset = self.queryset.clone()
